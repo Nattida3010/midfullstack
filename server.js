@@ -113,5 +113,9 @@ console.log('UPDATE : '+ sql);
 
 });
 
-console.log('App is running at http://localhost:8080');
-app.listen(8080);
+// console.log('App is running at http://localhost:8080');
+// app.listen(8080);
+var port = process.env.PORT || 8080;
+app.listen(port, function() {
+console.log('App is running on http://localhost:' + port);
+});
