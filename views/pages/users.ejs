@@ -1,0 +1,23 @@
+<% include ../partials/header %>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Password</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% users.forEach(function(user){%>
+        <tr>
+            <td scope="row"><%= user.id %></td>
+            <td><%= user.email %></td>
+            <td><%= user.password %></td>
+        </tr>
+        <% }); %>
+        
+    </tbody>
+</table>
+
+  <% include ../partials/footer %>
