@@ -25,7 +25,7 @@ app.get('/index', function (req, res) {
 });
 app.get('/about', function (req, res) {
     var name = 'Puinun';
-    var hobbies = ['Football', 'Movie', 'Programming']
+    var hobbies = ['Footba', 'Movie', 'Programming']
     var bdate = '06/08/1997'
     res.render('pages/about', { nickname: name, hobbies: hobbies, bdate: bdate });
 });
