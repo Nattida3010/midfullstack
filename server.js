@@ -114,21 +114,21 @@ console.log('UPDATE : '+ sql);
     
 
 });
-app.post('/products/add', function (req, res) {
-    var id = request.body.id;
-    var price = request.body.price;
-    var title = request.body.title;
-    var sql = INSERT INTO products (id,title,price) VALUES  ('${id}','${title}','${price}');
-    db.query(sql)
-        .then(function (data) {
-            response.redirect('/products')
+// app.post('/products/add', function (req, res) {
+//     var id = request.body.id;
+//     var price = request.body.price;
+//     var title = request.body.title;
+//     var sql = INSERT INTO products (id,title,price) VALUES  ('${id}','${title}','${price}');
+//     db.query(sql)
+//         .then(function (data) {
+//             response.redirect('/products')
 
-        })
-        .catch(function (data) {
-            console.log('ERROR:' + console.error);
+//         })
+//         .catch(function (data) {
+//             console.log('ERROR:' + console.error);
 
-        })
-});
+//         })
+// });
 app.get('/add', function (req, res) {
     res.render('pages/add');
 });
