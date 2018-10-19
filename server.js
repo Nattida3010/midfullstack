@@ -108,12 +108,12 @@ app.post('/product/update',function (req, res) {
     var sql = `Update product set title = ${title}, price = ${price} where id = ${id}`;
   //  var sql = 'Update product set title = "'+ title +'", price = "'+ price + '" where id = '+ id;
 // db.none
-app.get('/products/add', function (req, res) {
-    res.render('pages/index');
+app.get('/add', function (req, res) {
+    res.render('pages/add');
 });
 
-console.log('UPDATE : '+ sql);
-    res.redirect('/products');
+// console.log('UPDATE : '+ sql);
+//     res.redirect('/products');
     
 
 });
