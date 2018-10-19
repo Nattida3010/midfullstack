@@ -108,6 +108,10 @@ app.post('/product/update',function (req, res) {
     var sql = `Update product set title = ${title}, price = ${price} where id = ${id}`;
   //  var sql = 'Update product set title = "'+ title +'", price = "'+ price + '" where id = '+ id;
 // db.none
+app.get('/add', function (request, response) {
+    var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+    response.render('pages/insert', { time: time});
+});
 console.log('UPDATE : '+ sql);
     res.redirect('/products');
     
