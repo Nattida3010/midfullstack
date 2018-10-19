@@ -1,18 +1,23 @@
 <% include ../partials/header %>
-
-    <h1 ><%= nickname%></h1>
-    <ul>
-    <ul>
-    <% hobbies.forEach(function(hobby) { %>
-        <li><%= hobby %> </li>
-    <% }); %>
-</ul>
-       <p >Radtanaporn  Choeikan</p>
-      
-       <p>SomeWhere Between Sad And Tries</p>
-      
-   
-</div>
-<h3><%= bdate %></h3>
+<form action="/product/insert" method="POST">
+    <div class="form-group">
+      <label for="">ID</label>
+      <input type="number" name="id" id="" class="form-control" value= "" placeholder="" aria-describedby="helpId">
+      <small id="helpId" class="text-muted">Product ID</small>
+    </div>
+    <div class="form-group">
+        <label for="">TITLE</label>
+        <input type="text" name="title" id="" class="form-control"value= "" placeholder="" aria-describedby="helpId">
+        <small id="helpId" class="text-muted">Product Title</small>
+      </div>
+      <div class="form-group">
+        <label for="">Price</label>
+        <input type="number" name="" id="price" class="form-control"value= "" placeholder="" aria-describedby="helpId">
+        <small id="helpId" class="text-muted">Product Price </small>
+      </div>  
+      <div class="text-center">
+        <a name="" id="" class="btn btn-success" href="#" role="button">Save</a>
+    </div>
+    </form>
 
   <% include ../partials/footer %>
