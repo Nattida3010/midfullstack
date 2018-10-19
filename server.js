@@ -109,10 +109,25 @@ app.post('/product/update',function (req, res) {
   //  var sql = 'Update product set title = "'+ title +'", price = "'+ price + '" where id = '+ id;
 // db.none
 
-// console.log('UPDATE : '+ sql);
-//     res.redirect('/products');
+console.log('UPDATE : '+ sql);
+    res.redirect('/products');
     
 
+});
+app.post('/products/add', function (req, res) {
+    var id = request.body.id;
+    var price = request.body.price;
+    var title = request.body.title;
+    var sql = INSERT INTO products (id,title,price) VALUES  ('${id}','${title}','${price}');
+    db.query(sql)
+        .then(function (data) {
+            response.redirect('/products')
+
+        })
+        .catch(function (data) {
+            console.log('ERROR:' + console.error);
+
+        })
 });
 app.get('/add', function (req, res) {
     res.render('pages/add');

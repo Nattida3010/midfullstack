@@ -15,9 +15,14 @@
         <input type="number" name="" id="price" class="form-control"value= "" placeholder="" aria-describedby="helpId">
         <small id="helpId" class="text-muted">Product Price </small>
       </div>  
-      <div class="text-center">
-        <a name="" id="" class="btn btn-success" href="#" role="button">Save</a>
-    </div>
-    </form>
+      <div class="form-group">
+        <label for="">Time</label>
+        <input type="text"
+          class="form-control" value="<%= time %>"name="price" id="" aria-describedby="helpId" placeholder="" disabled>
+        <small id="helpId" class="form-text text-muted">Price</small>
+      </div>
+      
+  <button type="submit" class="btn btn-secondary">Save</button>
+</div>
 
   <% include ../partials/footer %>
