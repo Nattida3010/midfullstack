@@ -1,24 +1,30 @@
 <% include ../partials/header %>
-<form action="/product/add" method="POST">
-    <div class="form-group">
-      <label for="">ID</label>
-      <input type="number" name="id" id="" class="form-control" value= "" placeholder="" aria-describedby="helpId">
-      <small id="helpId" class="text-muted">Product ID</small>
-    </div>
-    <div class="form-group">
-        <label for="">TITLE</label>
-        <input type="text" name="title" id="" class="form-control"value= "" placeholder="" aria-describedby="helpId">
-        <small id="helpId" class="text-muted">Product Title</small>
-      </div>
-      <div class="form-group">
-        <label for="">Price</label>
-        <input type="number" name="" id="price" class="form-control"value= "" placeholder="" aria-describedby="helpId">
-        <small id="helpId" class="text-muted">Product Price </small>
-      </div>  
-      <div class="text-center">
-       <button type="submit" class="btn btn-success">Save</button>
-       <a name="" id="" class="btn btn-secondary" href="/products" role="button">Cancel</a>
-       </div>
+<form action="/product/add"  method = "POST">
+<div class="jumbotron">
+<h1 class="display-4">NEW PROJECT</h1>
+<div class="form-group">
+  <label for="">ID</label>
+  <input type="number"
+    class="form-control" name="id" id="" aria-describedby="helpId" placeholder="ID">
+  <small id="helpId" class="form-text text-muted"></small>
+</div>
+<div class="form-group">
+  <label for="">Title</label>
+  <input type="text"
+    class="form-control" name="title" id="" aria-describedby="helpId" placeholder="Title">
+  <small id="helpId" class="form-text text-muted"></small>
+</div>
+<div class="form-group">
+  <label for="">Price</label>
+  <input type="number"
+    class="form-control" name="price" id="" aria-describedby="helpId" placeholder="Price">
+  <small id="helpId" class="form-text text-muted"></small>
 </div>
 
-  <% include ../partials/footer %>
+<a name="" id="" class="btn btn-secondary" href="/products" role="button">CANCLE</a>
+<button type = "submit" class="btn btn-success">Save</button>
+
+</div>
+</form>
+
+<% include ../partials/footer %>
