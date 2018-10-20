@@ -158,7 +158,90 @@ app.get('/product_delete/:id', function (req, res) {
             console.log('ERROR:' + error);
         })
 });
+//Display All Users
+app.get('/users', function (req, res) {
+    var id = req.param('id');
+    var sql = 'select* from users';
+    if (id) {
+        sql += ' Where id =' + id;
+    }
+    db.any(sql)
+        .then(function (data) {
+            console.log('DATA' + data);
+            res.render('pages/users', { users: data })
+        })
+        .catch(function (error) {
+            console.log('ERROR : ' + error);
+        })
+});
 
+//Display User By ID
+app.get('/users/:id', function (req, res) {
+    var id = req.params.id;
+    var sql = "select * from users where id =" + id;
+    db.any(sql)
+        .then(function (data) {
+            res.render('pages/user_edit', { user: data[0] })
+        })
+        .catch(function (error) {
+            console.log('ERROR : ' + error);
+        });
+})
+
+//Add New User
+app.post('/user/add_user', function (req, res) {
+    var id = req.body.id;
+    var email = req.body.email;
+    var password = req.body.password;
+    var sql = `INSERT INTO users (id, email, password)
+    VALUES ('${id}', '${email}', '${password}')`;
+    console.log('UPDATE:' + sql);
+    db.any(sql)
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.redirect('/users')
+
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+})
+app.get('/add_user', function (req, res) {
+    res.render('pages/add_user');
+})
+
+ //Edit User
+app.post('/user/update', function (req, res) {
+    var id = req.body.id;
+    var email = req.body.email;
+    var password = req.body.password;
+    var sql = `update users set email = '${email}', password = '${password}' where id = '${id}'`;
+    db.query(sql)
+       .then(function(data){
+           res.redirect('/users')
+       })
+       .catch(function(data){
+           console.log('ERROR:'+console.error);
+       })
+});
+
+//Delete User
+app.get('/user_delete/:pid', function (req, res) {
+    var pid = req.params.pid;
+    var sql = 'DELETE FROM users';
+    if (pid) {
+        sql += ' where id =' + pid;
+    }
+    db.query(sql)
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.redirect('/users');
+
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+});
 
 //time product
 app.get('/add_product', function (req, res) {
