@@ -114,7 +114,7 @@ console.log('UPDATE : '+ sql);
     
 
 });
-app.post('/products/add', function (req, res) {
+app.post(newFunction(), function (req, res) {
     var id = req.body.id;
     var price = req.body.price;
     var title = req.body.title;
@@ -139,3 +139,7 @@ var port = process.env.PORT || 8080;
 app.listen(port, function() {
 console.log('App is running on http://localhost:' + port);
 });
+
+function newFunction() {
+    return '/products/add';
+}
