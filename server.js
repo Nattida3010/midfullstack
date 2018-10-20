@@ -114,7 +114,7 @@ console.log('UPDATE : '+ sql);
     
 
 });
-app.post('/products/add', function (req, res) {
+app.post('/add', function (req, res) {
     var id = req.body.id;
     var price = req.body.price;
     var title = req.body.title;
