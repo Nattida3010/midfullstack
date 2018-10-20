@@ -127,12 +127,10 @@ app.post('/product/update',function (req, res) {
      //db.none
     db.any(sql)
         .then(function (data) {
-            console.log('DATA:' + data);
             res.redirect('/products')
-
         })
         .catch(function (error) {
-            console.log('ERROR:' + error);
+            console.log('ERROR:' + console.error);
         })
 
 });
