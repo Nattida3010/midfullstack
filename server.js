@@ -126,7 +126,7 @@ app.post('/product/add_product', function (req, res) {
 app.get('/add_product', function (req, res) {
     res.render('pages/add_product');
 })
-///update
+///update product
 app.post('/product/update',function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
@@ -165,7 +165,10 @@ app.get('/product_delete/:id', function (req, res) {
 
 // console.log('App is running at http://localhost:8080');
 // app.listen(8080);
-
+app.get('/add_product', function (req, res) {
+    var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+    res.render('pages/add_product', { time: time});
+});
 var port = process.env.PORT || 8080;
 app.listen(port, function() {
 console.log('App is running on http://localhost:' + port);
