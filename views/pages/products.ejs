@@ -1,12 +1,15 @@
 <% include ../partials/header %>
 
-<script language="javascript">
-    function myFunction() {
-        confirm("Are you sure you want to delete this product?");
-    //alert('Are you sure you want to delete this product?');
-     }
-    
-    </script>
+<script language="JavaScript">
+    function myFunction(){
+      if(confirm('Do you want to delete product')==true){
+        window.location = "/product_delete/<%= product.id %>";
+        
+     }else{
+      return(null);
+    }
+  }
+  </script>
 
 <table class="table">
     <thead>
