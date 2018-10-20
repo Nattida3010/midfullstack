@@ -189,7 +189,7 @@ app.get('/users/:id', function (req, res) {
 })
 
 //Add New User
-app.post('/user/add_user', function (req, res) {
+app.post('/users/add_user', function (req, res) {
     var id = req.body.id;
     var email = req.body.email;
     var password = req.body.password;
