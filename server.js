@@ -105,7 +105,7 @@ app.get('/products/:pid', function (req, res) {
 
 //addnewproduct
 
-app.post('/product/add', function (req, res) {
+app.post('/product/add_product', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
@@ -123,8 +123,8 @@ app.post('/product/add', function (req, res) {
             console.log('ERROR:' + error);
         })
 })
-app.get('/add', function (req, res) {
-    res.render('pages/add');
+app.get('/add_product', function (req, res) {
+    res.render('pages/add_product');
 })
 ///update
 app.post('/product/update',function (req, res) {
@@ -142,7 +142,7 @@ app.post('/product/update',function (req, res) {
         })
 
 });
-app.get('/add', function (req, res) {
+app.get('/add_product', function (req, res) {
     res.render('pages/add');
 });
 //delete product button
@@ -170,5 +170,5 @@ console.log('App is running on http://localhost:' + port);
 });
 
 function newFunction() {
-    return '/products/add';
+    return '/products/add_product';
 }
