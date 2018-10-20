@@ -33,7 +33,7 @@ app.get('/about', function (req, res) {
 app.get('/products', function (req, res) {
     db.any('select* from products')
     var id = req.param('id');
-    var sql = 'select * from products';
+    var sql = ('select * from products order by id ASC');
     if (id) {
         sql += ' where id =' + id;
 
