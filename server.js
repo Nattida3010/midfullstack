@@ -4,6 +4,7 @@ var pgp = require('pg-promise')();
 //var db =pgp(process.env.DATABASE_URL);
 var db = pgp('postgres://sguzzrbjzwawcf:b9b96230384d50890bff7be60b7b32a703beca2827c9f83f3eaaa9c96f6ff251@ec2-54-243-147-162.compute-1.amazonaws.com:5432/d9i6vbnk6jnrb4?ssl=true')
 var app = express();
+var moment = require('moment');
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); 
@@ -123,9 +124,6 @@ app.post('/product/add_product', function (req, res) {
             console.log('ERROR:' + error);
         })
 })
-app.get('/add_product', function (req, res) {
-    res.render('pages/add_product');
-})
 ///update product
 app.post('/product/update',function (req, res) {
     var id = req.body.id;
@@ -142,9 +140,7 @@ app.post('/product/update',function (req, res) {
         })
 
 });
-app.get('/add_product', function (req, res) {
-    res.render('pages/add');
-});
+
 //delete product button
 app.get('/product_delete/:id', function (req, res) {
     var id = req.params.id;
