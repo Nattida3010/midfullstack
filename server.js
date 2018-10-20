@@ -165,6 +165,10 @@ app.get('/product_delete/:id', function (req, res) {
 
 // console.log('App is running at http://localhost:8080');
 // app.listen(8080);
+app.get('/insert', function (req res) {
+    var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+    res.render('pages/insert', { time: time});
+});
 var port = process.env.PORT || 8080;
 app.listen(port, function() {
 console.log('App is running on http://localhost:' + port);
