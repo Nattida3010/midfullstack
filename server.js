@@ -189,13 +189,13 @@ app.get('/users/:id', function (req, res) {
 })
 
 //Add New User
-app.post('/users/add_user', function (req, res) {
+app.post('/user/add_user', function (req, res) {
     var id = req.body.id;
     var email = req.body.email;
     var password = req.body.password;
     var sql = `INSERT INTO users (id, email, password)
     VALUES ('${id}', '${email}', '${password}')`;
-    console.log('UPDATE:' + sql);
+    //console.log('UPDATE:' + sql);
     db.any(sql)
         .then(function (data) {
             console.log('DATA:' + data);
