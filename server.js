@@ -114,14 +114,13 @@ console.log('UPDATE : '+ sql);
     
 
 });
-app.post('/add', function (req, res) {
+app.post('/products/add', function (req, res) {
     var id = req.body.id;
     var price = req.body.price;
     var title = req.body.title;
     var sql = 'INSERT INTO products (id,title,price) VALUES ' ('${id}','${title}','${price}');
     db.query(sql)
         .then(function (data) {
-            console.log('DATA:' + data);
             res.redirect('/products')
 
         })
