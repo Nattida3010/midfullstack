@@ -1,5 +1,6 @@
 <% include ../partials/header %>
 
+
     <script language="JavaScript">
         function chkConfirm(){
           if(confirm('Are you sure you want to delete this product?')==true){
@@ -30,7 +31,7 @@
             <td><%= product.title %></td>
             <td><%= product.price %></td>
             <td><a name="" id="" class="btn btn-info" href="/products/<%= product.id %>" role="button">EDIT</a></td>
-                <td><a name="btnConfirm" value="Confirm" OnClick="chkConfirm()" class="btn btn-danger" href="#" role="button">DELETE</a></td>
+            <td><a name="btnConfirm" value="Confirm" OnClick="chkConfirm()" class="btn btn-danger" href="/product_delete/<%= product.id %>" role="button">DELETE</a></td>
         </tr>
         <% }); %>
         
