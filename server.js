@@ -30,6 +30,7 @@ app.get('/about', function (req, res) {
     var bdate = '06/08/1997'
     res.render('pages/about', { nickname: name, hobbies: hobbies, bdate: bdate });
 });
+
 //display all products
 app.get('/products', function (req, res) {
     db.any('select* from products')
@@ -49,6 +50,7 @@ app.get('/products', function (req, res) {
         })
 
 });
+//users
 app.get('/users', function (req, res){
     var id = req.param('id');
     var sql = 'select* from users';
@@ -70,6 +72,7 @@ app.get('/users', function (req, res){
 
 
 });
+//user id
 app.get('/users/:id', function (req, res) {
     var id = req.params.id;
     db.any('select* from users')
@@ -89,6 +92,7 @@ app.get('/users/:id', function (req, res) {
         });
 });
 
+//product id
 app.get('/products/:pid', function (req, res) {
     var pid = req.params.pid;
     var sql = "select * from products where id =" + pid;
@@ -105,8 +109,12 @@ app.get('/products/:pid', function (req, res) {
 
 
 //addnewproduct
-
-app.post('/product/add_product', function (req, res) {
+//time product
+app.get('/add_product', function (req, res) {
+    var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+    res.render('pages/add_product', { time: time});
+});
+app.post('/products/add_product', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
@@ -125,7 +133,7 @@ app.post('/product/add_product', function (req, res) {
         })
 })
 ///update product
-app.post('/product/update',function (req, res) {
+app.post('/products/update',function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
@@ -189,7 +197,10 @@ app.get('/users/:id', function (req, res) {
 })
 
 //Add New User
-app.post('/user/add_user', function (req, res) {
+app.get('/add_user', function (req, res) {
+    res.render('pages/add_user');
+})
+app.post('/users/add_user', function (req, res) {
     var id = req.body.id;
     var email = req.body.email;
     var password = req.body.password;
@@ -206,12 +217,13 @@ app.post('/user/add_user', function (req, res) {
             console.log('ERROR:' + error);
         })
 })
-app.get('/add_user', function (req, res) {
-    res.render('pages/add_user');
-})
+
+
+
+
 
  //Edit User
-app.post('/user/update', function (req, res) {
+app.post('/users/update', function (req, res) {
     var id = req.body.id;
     var email = req.body.email;
     var password = req.body.password;
@@ -243,11 +255,7 @@ app.get('/user_delete/:pid', function (req, res) {
         })
 });
 
-//time product
-app.get('/add_product', function (req, res) {
-    var time = moment().format('MMMM Do YYYY, h:mm:ss a');
-    res.render('pages/add_product', { time: time});
-});
+
 
 var port = process.env.PORT || 8080;
 app.listen(port, function() {
