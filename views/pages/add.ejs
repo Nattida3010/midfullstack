@@ -1,5 +1,5 @@
 <% include ../partials/header %>
-<form action="/products/add" method="POST">
+<form action="/add" method="POST">
     <div class="form-group">
       <label for="">ID</label>
       <input type="number" name="id" id="" class="form-control" value= "" placeholder="" aria-describedby="helpId">
@@ -15,8 +15,8 @@
         <input type="number" name="" id="price" class="form-control"value= "" placeholder="" aria-describedby="helpId">
         <small id="helpId" class="text-muted">Product Price </small>
       </div>  
-      
-    <button type="submit" class="btn btn-secondary">Save</button>
+      <a name="" id="" class="btn btn-secondary" href="/products" role="button">CANCLE</a>
+       <button type="submit" class="btn btn-secondary">Save</button>
 </div>
 
   <% include ../partials/footer %>

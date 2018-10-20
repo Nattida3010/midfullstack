@@ -121,7 +121,8 @@ app.post('/products/add', function (req, res) {
     var sql = 'INSERT INTO products (id,title,price) VALUES ' ('${id}','${title}','${price}');
     db.query(sql)
         .then(function (data) {
-            response.redirect('/products')
+            console.log('DATA:' + data);
+            res.redirect('/products')
 
         })
         .catch(function (data) {
