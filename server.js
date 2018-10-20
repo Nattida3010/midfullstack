@@ -118,7 +118,7 @@ app.get('/products/:pid', function (req, res) {
 // });
 
 ///update
-app.post('/product/update',function (req, res) {
+app.post('/products/update',function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
