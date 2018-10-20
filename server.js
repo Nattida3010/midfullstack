@@ -100,25 +100,26 @@ app.get('/products/:pid', function (req, res) {
     console.log('ERROR:' + error);
 });
 });
-// app.post('/product/update', function (req, res) {
-//     var id = req.body.id;
-//     var title = req.body.title;
-//     var price = req.body.price;
-//     var sql = `update products set title = '${title}',price = '${price}' where id = '${id}' `;
-//     //db.none
-//     db.any(sql)
-//         .then(function (data) {
-//             console.log('DATA:' + data);
-//             res.redirect('/products')
 
-//         })
-//         .catch(function (error) {
-//             console.log('ERROR:' + error);
-//         })
-// });
 
+
+app.post(newFunction(), function (req, res) {
+    var id = req.body.id;
+    var price = req.body.price;
+    var title = req.body.title;
+    var sql = 'INSERT INTO products (id,title,price) VALUES ' ('${id}','${title}','${price}');
+    db.query(sql)
+        .then(function (data) {
+            res.redirect('/products')
+
+        })
+        .catch(function (data) {
+            console.log('ERROR:' + console.error);
+
+        })
+});
 ///update
-app.post('/products/update',function (req, res) {
+app.post('/product/update',function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
@@ -134,21 +135,6 @@ app.post('/products/update',function (req, res) {
             console.log('ERROR:' + error);
         })
 
-});
-app.post(newFunction(), function (req, res) {
-    var id = req.body.id;
-    var price = req.body.price;
-    var title = req.body.title;
-    var sql = 'INSERT INTO products (id,title,price) VALUES ' ('${id}','${title}','${price}');
-    db.query(sql)
-        .then(function (data) {
-            res.redirect('/products')
-
-        })
-        .catch(function (data) {
-            console.log('ERROR:' + console.error);
-
-        })
 });
 app.get('/add', function (req, res) {
     res.render('pages/add');
