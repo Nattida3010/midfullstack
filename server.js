@@ -165,7 +165,7 @@ app.get('/product_delete/:id', function (req, res) {
 
 // console.log('App is running at http://localhost:8080');
 // app.listen(8080);
-app.get('/insert', function (req res) {
+app.get('/insert', function (req,res) {
     var time = moment().format('MMMM Do YYYY, h:mm:ss a');
     res.render('pages/insert', { time: time});
 });
