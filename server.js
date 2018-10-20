@@ -100,13 +100,30 @@ app.get('/products/:pid', function (req, res) {
     console.log('ERROR:' + error);
 });
 });
+// app.post('/product/update', function (req, res) {
+//     var id = req.body.id;
+//     var title = req.body.title;
+//     var price = req.body.price;
+//     var sql = `update products set title = '${title}',price = '${price}' where id = '${id}' `;
+//     //db.none
+//     db.any(sql)
+//         .then(function (data) {
+//             console.log('DATA:' + data);
+//             res.redirect('/products')
+
+//         })
+//         .catch(function (error) {
+//             console.log('ERROR:' + error);
+//         })
+// });
+
 ///update
-app.post('/product/update', function (req, res) {
+app.post('/products/update',function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
-    var sql = `update products set title = '${title}',price = '${price}' where id = '${id}' `;
-    //db.none
+    var sql = `Update product set title = ${title}, price = ${price} where id = ${id}`;
+     //db.none
     db.any(sql)
         .then(function (data) {
             console.log('DATA:' + data);
@@ -116,14 +133,6 @@ app.post('/product/update', function (req, res) {
         .catch(function (error) {
             console.log('ERROR:' + error);
         })
-});
-
-  //  var sql = 'Update product set title = "'+ title +'", price = "'+ price + '" where id = '+ id;
-// db.none
-
-console.log('UPDATE : '+ sql);
-    res.redirect('/products');
-    
 
 });
 app.post(newFunction(), function (req, res) {
