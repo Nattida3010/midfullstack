@@ -1,25 +1,30 @@
 <% include ../partials/header %>
-<form action="/product/update" method="POST">
+
+<form action = "/product/update" method = "POST">
+
 <div class="form-group">
   <label for="">ID</label>
-  <input type="number" name="id" id="" class="form-control" value= "<%= product.id %>" placeholder="" aria-describedby="helpId">
-  <small id="helpId" class="text-muted">Product ID</small>
+  <input type="number"
+    class="form-control" value = "<%= product.id %>" name="id" id="" aria-describedby="helpId" placeholder="">
+  <small id="helpId" class="form-text text-muted">Product ID</small>
 </div>
 <div class="form-group">
-    <label for="">TITLE</label>
-    <input type="text" name="title" id="" class="form-control"value= "<%= product.title %>" placeholder="" aria-describedby="helpId">
-    <small id="helpId" class="text-muted">Product Title</small>
-  </div>
-  <div class="form-group">
-    <label for="">Price</label>
-    <input type="number" name="" id="price" class="form-control"value= "<%= product.price %>" placeholder="" aria-describedby="helpId">
-    <small id="helpId" class="text-muted">Product Price </small>
-  </div>  
-  <div class="text-center">
-    <button type="submit" class="btn btn-success">SAVE</button>
-    <a name="" id="" class="btn btn-secondary" href="/products" role="button">Cancel</a>
- 
-
+  <label for="">TITLE</label>
+  <input type="text"
+    class="form-control" value = "<%= product.title %>" name="title" id="" aria-describedby="helpId" placeholder="">
+  <small id="helpId" class="form-text text-muted">Product Title</small>
 </div>
+<div class="form-group">
+  <label for="">Price</label>
+  <input type="number"
+    class="form-control" value = "<%= product.price %>" name="price" id="" aria-describedby="helpId" placeholder="">
+  <small id="helpId" class="form-text text-muted">Product Price</small>
+</div>
+<div class="text-center">
+        <button type = "submit" class="btn btn-success">Save</button>
+        <a name="" id="" class="btn btn-warning" href="/products" role="button">Cancel</a>
+        
+    </div>
 </form>
-  <% include ../partials/footer %>
+
+<% include ../partials/footer %>
