@@ -19,9 +19,10 @@
             <td><%= product.title %></td>
             <td><%= product.price %></td>
             <td><a name="" id="" class="btn btn-info" href="/products/<%= product.id %>" role="button">EDIT</a></td>
-            <a name="" id="" OnClick="JavaScript:fncAlert();" class="btn btn-danger" href="/product_delete/<%= product.id %>" role="button">DELETE</a>
+                <td><a name="" id="" OnClick="JavaScript:fncAlert();" class="btn btn-danger" href="/product_delete/<%= product.id %>" role="button">DELETE</a></td>
         </tr>
         <% }); %>
+        
         
     </tbody>
 </table>
