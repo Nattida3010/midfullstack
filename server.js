@@ -33,22 +33,14 @@ app.get('/about', function (req, res) {
 
 //display all products
 app.get('/products', function (req, res) {
- 
-    var id = req.param('id');
-    var sql = ('select * from products order by id ASC');
-    if (id) {
-        sql += ' where id =' + id;
-
-    }
-    db.any(sql)
+    db.any('select* from products order by id ASC')
         .then(function (data) {
-            console.log('DATA:' + data);
-            res.render('pages/products', { products : data })
+            console.log('DATA' + data);
+            res.render('pages/products', { products: data })
         })
         .catch(function (error) {
-            console.log('ERROR:' + error);
-        })
-
+            console.log('ERROR : ' + error);
+        });
 });
 //users
 app.get('/users', function (req, res){
@@ -105,32 +97,29 @@ app.get('/products/:pid', function (req, res) {
 
 
 //add Product
-app.get('/add_product', function(req, res) {
-    var time = moment().format();
-        res.render('pages/add_product',{time: time})
-        
-    });
-app.post('/products/add_product', function (req, res) {
+app.post('/product/add_product', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
-    var time = req.body.time;
     var price = req.body.price;
-    var sql = `INSERT INTO products (id,title,price,created_at)
-    VALUES ('${id}', '${title}', '${price}','${time}')`;
-    //db.none
+    var time = req.body.time;
+    // var tags = req.body.tags;
     
-
+    var sql = `INSERT INTO products (id, title, price,created_at) VALUES ('${id}', '${title}', '${price}', '${time}')`;
+    // res.send(sql)
+    console.log('UPDATE:' + sql);
     db.any(sql)
         .then(function (data) {
             console.log('DATA:' + data);
             res.redirect('/products')
-        })
 
+        })
         .catch(function (error) {
             console.log('ERROR:' + error);
         })
-
-        
+})
+app.get('/add_product', function (req, res) {
+    var time = moment().format();
+    res.render('pages/add_product', { time: time});
 });
 // //time product add
 // app.get('/add_product', function (req, res) {
