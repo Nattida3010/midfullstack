@@ -75,11 +75,12 @@ app.get('/users', function (req, res){
 // Display all user
 app.get('/users/:id', function(req, res) {
     var id =req.params.id;
+    var time = moment().format();
     var sql = "select * from users where id= " + id;
     db.any(sql)
         .then(function (data) {
-            console.log('DATA:' + data);
-            res.render('pages/user_edit', { user: data[0] })
+            
+            res.render('pages/user_edit', { user: data[0],time:time })
 
         })
         .catch(function (error) {
@@ -127,7 +128,8 @@ app.post('/products/update',function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
-    var sql = `update products set title = '${title}', price = '${price}' where id = '${id}'`;
+    var time = req.body.time;
+    var sql = `update products set title = '${title}', price = '${price}' , created_at='${time}'where id = '${id}'`;
      //db.none
     db.any(sql)
         .then(function (data) {
@@ -188,7 +190,8 @@ app.post('/users/update',function (req,res) {
     var id =req.body.id;
     var email =req.body.email;
     var password =req.body.password;
-    var sql=`update users set email='${email}',password='${password}' where id=${id}`;
+    var time = req.body.time;
+    var sql=`update users set email='${email}',password='${password}', created_at='${time}' where id=${id}`;
     // res.send(sql)
     //db.none
     db.query(sql);
@@ -216,7 +219,7 @@ app.get('/user_delete/:pid', function (req, res) {
 
 //time user add
 app.get('/add_user', function (req, res) {
-    var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+    var time = moment().format();
     res.render('pages/add_user', { time: time});
 });
 //time product add
