@@ -103,11 +103,7 @@ app.get('/products/:pid', function (req, res) {
 
 
 
-//time product
-app.get('/add_product', function (req, res) {
-    var time = moment().format('MMMM Do YYYY, h:mm:ss a');
-    res.render('pages/add_product', { time: time});
-});
+
 app.post('/products/add_product', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
@@ -218,10 +214,20 @@ app.get('/user_delete/:pid', function (req, res) {
         })
 });
 
-//time user
+//time user add
 app.get('/add_user', function (req, res) {
     var time = moment().format('MMMM Do YYYY, h:mm:ss a');
     res.render('pages/add_user', { time: time});
+});
+//time product add
+app.get('/add_product', function (req, res) {
+    var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+    res.render('pages/add_product', { time: time});
+});
+//time user edit
+app.get('/user_edit', function (req, res) {
+    var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+    res.render('pages/user_edit', { time: time});
 });
 
 var port = process.env.PORT || 8080;
