@@ -24,20 +24,18 @@
           </div>
         </div>
       </section> -->
-    <h1 ><%= nickname%></h1>
-    <ul>
-    <ul>
-    <% hobbies.forEach(function(hobby) { %>
-        <li><%= hobby %> </li>
-    <% }); %>
-</ul>
+   
+  
+
       <section class="page-section clearfix">
         <div class="container">
           <div class="intro">
            <div class="intro-text left-0 text-center bg-faded p-5 rounded">
               <h2 class="section-heading mb-4">
                 <span class="section-heading-upper">You can call me</span>
-                <span class="section-heading-lower"> "...PUINUN..." </span>
+                <span class="section-heading-lower"> <%= nickname%></span>
+                <span class="section-heading-lower"> <%= bdate %></span>
+                <span class="section-heading-lower"> <% hobbies.forEach(function(hobby) { %></span>
               </h2>
               <div class="product-item-description d-flex ml-auto">
                 <div class="bg-faded p-5 rounded">
@@ -52,6 +50,6 @@
       </section>
    
 </div>
-<h3><%= bdate %></h3>
+
 
   <% include ../partials/footer %>
