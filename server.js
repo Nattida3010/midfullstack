@@ -166,9 +166,7 @@ app.get('/product_delete/:id', function (req, res) {
 
 //Add New User
 
-app.get('/add_user',function (req, res) {
-    res.render('pages/add_user'); 
-})
+
 app.post('/users/add_user', function (req,res) {
     var id = req.body.id;
     var email = req.body.email;
