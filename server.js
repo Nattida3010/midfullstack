@@ -72,25 +72,20 @@ app.get('/users', function (req, res){
 
 
 });
-// //user id
-// app.get('/users/:id', function (req, res) {
-//     var id = req.params.id;
-//     db.any('select* from users')
-//     var id = req.param('id');
-//     var sql = 'select * from users';
-//     if (id) {
-//         sql += ' where id =' + id;
+// Display all user
+app.get('/users/:id', function(req, res) {
+    var id =req.params.id;
+    var sql = "select * from users where id= " + id;
+    db.any(sql)
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.render('pages/user_edit', { user: data[0] })
 
-//     }
-//     db.any(sql)
-//         .then(function (data) {
-//             console.log('DATA:' + data);
-//             res.render('pages/users', { users: data })
-//         })
-//         .catch(function (error) {
-//             console.log('ERROR:' + error);
-//         });
-// });
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+    })
 
 //product id
 app.get('/products/:pid', function (req, res) {
@@ -166,37 +161,9 @@ app.get('/product_delete/:id', function (req, res) {
             console.log('ERROR:' + error);
         })
 });
-// //Display All Users
-// app.get('/users', function (req, res) {
-//     var id = req.param('id');
-//     var sql = 'select* from users';
-//     if (id) {
-//         sql += ' Where id =' + id;
-//     }
-//     db.any(sql)
-//         .then(function (data) {
-//             console.log('DATA' + data);
-//             res.render('pages/users', { users: data })
-//         })
-//         .catch(function (error) {
-//             console.log('ERROR : ' + error);
-//         })
-// });
 
-// Display all user
-app.get('/users/:id', function(req, res) {
-    var id =req.params.id;
-    var sql = "select * from users where id= " + id;
-    db.any(sql)
-        .then(function (data) {
-            console.log('DATA:' + data);
-            res.render('pages/user_edit', { user: data[0] })
 
-        })
-        .catch(function (error) {
-            console.log('ERROR:' + error);
-        })
-    })
+
 
 //Add New User
 
