@@ -36,27 +36,18 @@ app.get('/products', function (req, res) {
         });
 });
 //users
-app.get('/users', function (req, res){
-    var id = req.param('id');
-    var sql = 'select* from users order by id ASC';
-
-    if(id){
-        sql += ' Where id ='+id;
-    }
-  
-    db.any(sql)
-    .then(function(data){
-        console.log('DATA'+data);
-        //res.json(data);
-        res.render('pages/users',{users : data})
-        
-    })
-    .catch(function(error){
-        console.log('ERROR : '+error);
-    })
-
-
+app.get('/users', function (req, res) {
+    db.any('select* from users order by id ASC')
+        .then(function (data) {
+            console.log('DATA' + data);
+            res.render('pages/products', { users: data })
+        })
+        .catch(function (error) {
+            console.log('ERROR : ' + error);
+        });
 });
+
+
 // Display all user
 app.get('/users/:id', function(req, res) {
     
