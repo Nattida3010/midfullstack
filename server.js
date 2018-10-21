@@ -210,7 +210,7 @@ app.post('/users/add_user', function (req,res) {
     var sql = `INSERT INTO users (id,title,price,created_at)
         VALUES ('${id}', '${title}', '${price}','${time}')`;
     //db.none
-     console.log('UPDATE:' + sql);
+    //  console.log('UPDATE:' + sql);
     db.any(sql)
         .then(function (data) {
             console.log('DATA:' + data);
