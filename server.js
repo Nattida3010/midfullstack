@@ -197,30 +197,28 @@ app.get('/users/:id', function (req, res) {
 })
 
 //Add New User
-app.get('/add_user', function (req, res) {
-    res.render('pages/add_user');
-});
-app.post('/users/add_user', function (req, res) {
+
+app.get('/add_user',function (req, res) {
+    res.render('pages/add_user'); 
+})
+app.post('/users/add_user', function (req,res) {
     var id = req.body.id;
     var email = req.body.email;
     var password = req.body.password;
-    var sql = `INSERT INTO users (id,email, password)
-    VALUES ('${id}','${email}','${password}')`;
-    // console.log('UPDATE:' + sql);
+    var sql = `INSERT INTO users (id,email,password)
+    VALUES ('${id}', '${email}', '${password}')`;
+    //db.none
+     console.log('UPDATE:' + sql);
     db.any(sql)
         .then(function (data) {
             console.log('DATA:' + data);
             res.redirect('/users')
-
         })
+
         .catch(function (error) {
             console.log('ERROR:' + error);
         })
-})
-
-
-
-
+});
 
  //Edit User
 app.post('/users/update', function (req, res) {

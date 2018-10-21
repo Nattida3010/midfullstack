@@ -1,33 +1,28 @@
 <% include ../partials/header %>
 
-<form action ="/users/add_user" method = "post">
-<div class="jumbotron">
-<h1 class="display-4">ADD NEW USER</h1>
+ <form action="/users/add_user" method="post">
 <div class="form-group">
-  <label for="">ID</label>
+  <label for="id">ID</label>
   <input type="number"
-    class="form-control" name="id" id="" aria-describedby="helpId" placeholder="" value="">
-  <small id="helpId" class="form-text text-muted"></small>
+    class="form-control" name="id" id="" aria-describedby="helpId" placeholder=""value="">
+  <small id="helpId" class="form-text text-muted">User ID</small>
 </div>
-<div class="form-group">
-  <label for="">Email</label>
-  <input type="email"
-    class="form-control" name="email" id="" aria-describedby="helpId" placeholder="" value="">
-  <small id="helpId" class="form-text text-muted"></small>
-</div>
-<div class="form-group">
-  <label for="">Password</label>
-  <input type="password"
-    class="form-control" name="password" id="" aria-describedby="helpId" placeholder="" value="">
-  <small id="helpId" class="form-text text-muted"></small>
-</div>
-<div class="form-group">
-    <label for="">Time</label>
-    <input type="text"
-      class="form-control" value="<%= time %>"name="price" id="" aria-describedby="helpId" placeholder="" disabled>
-    <small id="helpId" class="form-text text-muted">Price</small>
+
+  <div class="form-group">
+    <label for="Email">Email</label>
+    <input type="email"
+      class="form-control" name="email" id="" aria-describedby="helpId" placeholder=""value="">
+    <small id="helpId" class="form-text text-muted">Email</small>
   </div>
-<div>
+
+  <div class="form-group">
+    <label for=" ">Password</label>
+    <input type="text"
+      class="form-control" name="password" id="" aria-describedby="helpId" placeholder=""value="">
+    <small id="helpId" class="form-text text-muted">Password</small>
+    </div>
+    
+    
 <a name="" id="" class="btn btn-secondary" href="/users" role="button">CANCLE</a>
 <button type = "submit" class="btn btn-success">Save</button>
 </div>
