@@ -9,14 +9,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); 
 
-/*app.get('/',function(request, response){
-    response.send('Hello, ExpressJS');
-    });
 
-app.get('/test',function(request, response){
-    response.send('<H1>Test</H1>');
-    });*/
-//app.use(express.static('static'));
 app.set('view engine', 'ejs');
 app.get('/', function (req, res) {
     res.render('pages/index');
@@ -66,6 +59,7 @@ app.get('/users', function (req, res){
 });
 // Display all user
 app.get('/users/:id', function(req, res) {
+    db.any('select* from users order by id ASC')
     var id =req.params.id;
     var time = moment().format();
     var sql = "select * from users where id= " + id;
@@ -80,7 +74,7 @@ app.get('/users/:id', function(req, res) {
         })
     })
 
-//product id
+//all product 
 app.get('/products/:pid', function (req, res) {
     var pid = req.params.pid;
     var time = moment().format();
@@ -107,7 +101,7 @@ app.post('/products/add_product', function (req, res) {
     var sql = `INSERT INTO products (id, title, price,created_at) 
     VALUES ('${id}', '${title}', '${price}', '${time}')`;
     // res.send(sql)
-    res.send(sql)
+ 
     console.log('UPDATE:' + sql);
     db.any(sql)
         .then(function (data) {
@@ -121,32 +115,9 @@ app.post('/products/add_product', function (req, res) {
 })
 app.get('/add_product', function (req, res) {
     var time = moment().format();
-    res.render('pages/add_product', { time: time});
+    res.render('pages/add_product', {time:time});
 });
-// //time product add
-// app.get('/add_product', function (req, res) {
-//     var times = moment().format('MMMM Do YYYY, h:mm:ss a');
-//     res.render('pages/add_product', { time: times});
-// });
-// app.post('/products/add_product', function (req, res) {
-//     var id = req.body.id;
-//     var title = req.body.title;
-//     var price = req.body.price;
-   
-//     var sql = `INSERT INTO products (id, title, price)
-//     VALUES ('${id}', '${title}', '${price}')`;
-//     //db.none
-//     // console.log('UPDATE:' + sql);
-//     db.any(sql)
-//         .then(function (data) {
-//             console.log('DATA:' + data);
-//             res.redirect('/products')
 
-//         })
-//         .catch(function (error) {
-//             console.log('ERROR:' + error);
-//         })
-// });
 ///update product
 app.post('/products/update',function (req, res) {
     var id = req.body.id;
@@ -195,7 +166,7 @@ app.post('/users/add_user', function (req, res) {
     var password = req.body.password;
     var time = req.body.time;
     var sql = `INSERT INTO users (id,email,password,created_at)
-    VALUES ('${id}', '${title}', '${price}','${time}')`;
+    VALUES ('${id}', '${email}', '${password}','${time}')`;
     //db.none
     db.any(sql)
         .then(function (data) {
@@ -207,32 +178,7 @@ app.post('/users/add_user', function (req, res) {
             console.log('ERROR:' + error);
         })      
 });
-// //Add New User
-// //time user add
-// app.get('/add_user', function (req, res) {
-//     var time = moment().format();
-//             res.render('pages/add_user',{time: time})
-            
-//         });
-// app.post('/users/add_user', function (req,res) {
-//     var id = req.body.id;
-//     var email = req.body.email;
-//     var password = req.body.password;
-//     var time = req.body.time;
-//     var sql = `INSERT INTO users (id,title,price,created_at)
-//         VALUES ('${id}', '${title}', '${price}','${time}')`;
-//     //db.none
-//     //  console.log('UPDATE:' + sql);
-//     db.any(sql)
-//         .then(function (data) {
-//             console.log('DATA:' + data);
-//             res.redirect('/users')
-//         })
 
-//         .catch(function (error) {
-//             console.log('ERROR:' + error);
-//         })
-// });
 
  //Edit User
 //update users
