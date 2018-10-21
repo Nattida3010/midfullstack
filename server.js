@@ -105,13 +105,18 @@ app.get('/products/:pid', function (req, res) {
 
 
 
-
+//time product add
+app.get('/add_product', function (req, res) {
+    var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+    res.render('pages/add_product', { time: time});
+});
 app.post('/products/add_product', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
+    var time = req.body.time;
     var sql = `INSERT INTO products (id, title, price)
-    VALUES ('${id}', '${title}', '${price}')`;
+    VALUES ('${id}', '${title}', '${price}',, '${time}')`;
     //db.none
     // console.log('UPDATE:' + sql);
     db.any(sql)
@@ -164,14 +169,19 @@ app.get('/product_delete/:id', function (req, res) {
 
 
 //Add New User
-
+//time user add
+app.get('/add_user', function (req, res) {
+    var time = moment().format();
+    res.render('pages/add_user', { time: time});
+});
 
 app.post('/users/add_user', function (req,res) {
     var id = req.body.id;
     var email = req.body.email;
     var password = req.body.password;
+    var time = req.body.time;
     var sql = `INSERT INTO users (id,email,password)
-    VALUES ('${id}', '${email}', '${password}')`;
+    VALUES ('${id}', '${email}', '${password}', '${time}')`;
     //db.none
      console.log('UPDATE:' + sql);
     db.any(sql)
@@ -218,16 +228,7 @@ app.get('/user_delete/:pid', function (req, res) {
         })
 });
 
-//time user add
-app.get('/add_user', function (req, res) {
-    var time = moment().format();
-    res.render('pages/add_user', { time: time});
-});
-//time product add
-app.get('/add_product', function (req, res) {
-    var time = moment().format('MMMM Do YYYY, h:mm:ss a');
-    res.render('pages/add_product', { time: time});
-});
+
 
 
 var port = process.env.PORT || 8080;
