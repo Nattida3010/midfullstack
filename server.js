@@ -107,16 +107,16 @@ app.get('/products/:pid', function (req, res) {
 
 //time product add
 app.get('/add_product', function (req, res) {
-    var time = moment().format('MMMM Do YYYY, h:mm:ss a');
-    res.render('pages/add_product', { time: time});
+    var times = moment().format('MMMM Do YYYY, h:mm:ss a');
+    res.render('pages/add_product', { time: times});
 });
 app.post('/products/add_product', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
-    var time = req.body.time;
-    var sql = `INSERT INTO products (id, title, price,created_at)
-    VALUES ('${id}', '${title}', '${price}', '${time}')`;
+   
+    var sql = `INSERT INTO products (id, title, price)
+    VALUES ('${id}', '${title}', '${price}')`;
     //db.none
     // console.log('UPDATE:' + sql);
     db.any(sql)
