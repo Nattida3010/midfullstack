@@ -16,11 +16,11 @@
     <tbody id="myTable">
         <% products.forEach(function(product){%>
         <tr>
-            <td scope="row"><%= product.id %></td>
+            <td scope="row"><%= product.product_id %></td>
             <td><%= product.title %></td>
             <td><%= product.price %></td>
-            <td><a name="" id="" class="btn btn-info" href="/products/<%= product.id %>" role="button">EDIT</a></td>
-            <td><a name="btnConfirm" value="Confirm"  class="btn btn-danger" href="/product_delete/<%= product.id %>" onclick="return confirm('Are you sure you want to delete this product?')"role="button">DELETE</a></td>
+            <td><a name="" id="" class="btn btn-info" href="/products/<%= product.product_id %>" role="button">EDIT</a></td>
+            <td><a name="btnConfirm" value="Confirm"  class="btn btn-danger" href="/product_delete/<%= product.product_id %>" onclick="return confirm('Are you sure you want to delete this product?')"role="button">DELETE</a></td>
         </tr>
         <% }); %>
         

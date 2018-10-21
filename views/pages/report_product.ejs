@@ -1,25 +1,27 @@
 <% include ../partials/header %>
-<br>
- <h2>Sorter By Cheapest price Products</h2>
+
+ <br>
+ <h2>Report Purchases Item List</h2>
 <table class="table">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Tittle</th>
-            <th>Price</th>
+            <th>Itemname</th>
+            <th>Quantity</th>
+            <th>Amount</th>
         </tr>
     </thead>
     <tbody id="myTable">
-     <% products.forEach(function(product){ %>
+     <% item.forEach(function(items){ %>
         <tr>
-            <td scope="row"><%= product.id %></td>
-            <td><%= product.title %></td>
-            <td><%= product.price %></td>
-            
+            <td scope="row"><%= items.title %></td>
+            <td><%= items.quantity %></td>
+            <td><%= items.price %></td>
+           
         </tr>
       <% }); %>
     </tbody>
 </table>
+
 
 
 
