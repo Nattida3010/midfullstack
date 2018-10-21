@@ -221,7 +221,7 @@ app.get('/user_delete/:pid', function (req, res) {
 });
 
 //time user
-app.get('/add_puser', function (req, res) {
+app.get('/add_user', function (req, res) {
     var time = moment().format('MMMM Do YYYY, h:mm:ss a');
     res.render('pages/add_user', { time: time});
 });
