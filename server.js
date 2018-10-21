@@ -104,31 +104,58 @@ app.get('/products/:pid', function (req, res) {
 });
 
 
-
-//time product add
-app.get('/add_product', function (req, res) {
-    var times = moment().format('MMMM Do YYYY, h:mm:ss a');
-    res.render('pages/add_product', { time: times});
-});
+//add Product
+app.get('/add_product', function(req, res) {
+    var time = moment().format();
+        res.render('pages/add_product',{time: time})
+        
+    });
 app.post('/products/add_product', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
+    var time = req.body.time
     var price = req.body.price;
-   
-    var sql = `INSERT INTO products (id, title, price)
-    VALUES ('${id}', '${title}', '${price}')`;
+    var sql = `INSERT INTO products (id,title,price,created_at)
+    VALUES ('${id}', '${title}', '${price}','${time}')`;
     //db.none
-    // console.log('UPDATE:' + sql);
+    
+
     db.any(sql)
         .then(function (data) {
             console.log('DATA:' + data);
             res.redirect('/products')
-
         })
+
         .catch(function (error) {
             console.log('ERROR:' + error);
         })
-})
+
+        
+});
+// //time product add
+// app.get('/add_product', function (req, res) {
+//     var times = moment().format('MMMM Do YYYY, h:mm:ss a');
+//     res.render('pages/add_product', { time: times});
+// });
+// app.post('/products/add_product', function (req, res) {
+//     var id = req.body.id;
+//     var title = req.body.title;
+//     var price = req.body.price;
+   
+//     var sql = `INSERT INTO products (id, title, price)
+//     VALUES ('${id}', '${title}', '${price}')`;
+//     //db.none
+//     // console.log('UPDATE:' + sql);
+//     db.any(sql)
+//         .then(function (data) {
+//             console.log('DATA:' + data);
+//             res.redirect('/products')
+
+//         })
+//         .catch(function (error) {
+//             console.log('ERROR:' + error);
+//         })
+// });
 ///update product
 app.post('/products/update',function (req, res) {
     var id = req.body.id;
@@ -166,23 +193,19 @@ app.get('/product_delete/:id', function (req, res) {
 });
 
 
-
-//Add New User
-//time user add
-app.get('/add_user', function (req, res) {
+//add users
+app.get('/add_user', function(req, res) {
     var time = moment().format();
-            res.render('pages/add_user',{time: time})
-            
-        });
-app.post('/users/add_user', function (req,res) {
+        res.render('pages/add_user',{time: time})
+        
+    });
+app.post('/users/add_user', function (req, res) {
     var id = req.body.id;
     var email = req.body.email;
     var password = req.body.password;
-    var time = req.body.time;
     var sql = `INSERT INTO users (id,title,price,created_at)
-        VALUES ('${id}', '${title}', '${price}','${time}')`;
+    VALUES ('${id}', '${title}', '${price}','${time}')`;
     //db.none
-    //  console.log('UPDATE:' + sql);
     db.any(sql)
         .then(function (data) {
             console.log('DATA:' + data);
@@ -192,7 +215,35 @@ app.post('/users/add_user', function (req,res) {
         .catch(function (error) {
             console.log('ERROR:' + error);
         })
+
+        
 });
+// //Add New User
+// //time user add
+// app.get('/add_user', function (req, res) {
+//     var time = moment().format();
+//             res.render('pages/add_user',{time: time})
+            
+//         });
+// app.post('/users/add_user', function (req,res) {
+//     var id = req.body.id;
+//     var email = req.body.email;
+//     var password = req.body.password;
+//     var time = req.body.time;
+//     var sql = `INSERT INTO users (id,title,price,created_at)
+//         VALUES ('${id}', '${title}', '${price}','${time}')`;
+//     //db.none
+//     //  console.log('UPDATE:' + sql);
+//     db.any(sql)
+//         .then(function (data) {
+//             console.log('DATA:' + data);
+//             res.redirect('/users')
+//         })
+
+//         .catch(function (error) {
+//             console.log('ERROR:' + error);
+//         })
+// });
 
  //Edit User
 //update users
