@@ -239,9 +239,9 @@ app.get('/report_product', function (req, res) {
     var id = req.param('id');
     var sql = 'select* from products ';
     if (id) {
-        sql += ' where id =' + id;
+        sql += ' where id =' + id+'ORDER BY price DESC LIMIT 3';
     }
-    db.any(sql+'ORDER BY price DESC limit 3')
+    db.any(sql+'ORDER BY price DESC LIMIT 3')
         .then(function (data) {
             console.log('DATA:' + data);
             res.render('pages/report_product', { products: data })
