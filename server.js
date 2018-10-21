@@ -180,7 +180,7 @@ app.post('/users/add_user', function (req,res) {
     var email = req.body.email;
     var password = req.body.password;
     var time = req.body.time;
-    var sql = `INSERT INTO users (id,email,password)
+    var sql = `INSERT INTO users (id,email,password,time)
     VALUES ('${id}', '${email}', '${password}', '${time}')`;
     //db.none
      console.log('UPDATE:' + sql);
