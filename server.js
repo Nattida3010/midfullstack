@@ -38,7 +38,7 @@ app.get('/products', function (req, res) {
 //users
 app.get('/users', function (req, res){
     var id = req.param('id');
-    var sql = 'select* from users';
+    var sql = 'select* from users order by id ASC';
 
     if(id){
         sql += ' Where id ='+id;
@@ -59,7 +59,7 @@ app.get('/users', function (req, res){
 });
 // Display all user
 app.get('/users/:id', function(req, res) {
-    db.any('select* from users order by id ASC')
+    
     var id =req.params.id;
     var time = moment().format();
     var sql = "select * from users where id= " + id;
