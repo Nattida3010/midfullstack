@@ -40,7 +40,7 @@ app.get('/users', function (req, res) {
     db.any('select* from users order by id ASC')
         .then(function (data) {
             console.log('DATA' + data);
-            res.render('pages/products', { users: data })
+            res.render('pages/users', { users: data })
         })
         .catch(function (error) {
             console.log('ERROR : ' + error);
