@@ -166,22 +166,49 @@ app.get('/product_delete/:id', function (req, res) {
 });
 
 
+// //add Product
+// app.get('/add', function(req, res) {
+//     var time = moment().format();
+//         res.render('pages/product_add',{time: time})
+        
+//     });
+// app.post('/products/insert', function (req, res) {
+//     var id = req.body.id;
+//     var title = req.body.title;
+//     var time = req.body.time
+//     var price = req.body.price;
+//     var sql = `INSERT INTO products (id,title,price,created_at)
+//     VALUES ('${id}', '${title}', '${price}','${time}')`;
+//     //db.none
+    
 
+//     db.any(sql)
+//         .then(function (data) {
+//             console.log('DATA:' + data);
+//             res.redirect('/products')
+//         })
+
+//         .catch(function (error) {
+//             console.log('ERROR:' + error);
+//         })
+
+        
+// })
 
 //Add New User
 //time user add
 app.get('/add_user', function (req, res) {
     var time = moment().format();
-    res.render('pages/add_user', { time: time});
-});
-
+            res.render('pages/add_user',{time: time})
+            
+        });
 app.post('/users/add_user', function (req,res) {
     var id = req.body.id;
     var email = req.body.email;
     var password = req.body.password;
     var time = req.body.time;
-    var sql = `INSERT INTO users (id,email,password,created_at)
-    VALUES ('${id}', '${email}', '${password}', '${time}')`;
+    var sql = `INSERT INTO users (id,title,price,created_at)
+        VALUES ('${id}', '${title}', '${price}','${time}')`;
     //db.none
      console.log('UPDATE:' + sql);
     db.any(sql)
