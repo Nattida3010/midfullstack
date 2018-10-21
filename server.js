@@ -97,7 +97,7 @@ app.get('/products/:pid', function (req, res) {
 
 
 //add Product
-app.post('/product/add_product', function (req, res) {
+app.post('/products/add_product', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
@@ -185,9 +185,8 @@ app.get('/product_delete/:id', function (req, res) {
 //add users
 app.get('/add_user', function(req, res) {
     var time = moment().format();
-        res.render('pages/add_user',{time: time})
-        
-    });
+    res.render('pages/add_user',{time: time});    
+    })
 app.post('/users/add_user', function (req, res) {
     var id = req.body.id;
     var email = req.body.email;
@@ -204,9 +203,7 @@ app.post('/users/add_user', function (req, res) {
 
         .catch(function (error) {
             console.log('ERROR:' + error);
-        })
-
-        
+        })      
 });
 // //Add New User
 // //time user add
