@@ -91,11 +91,12 @@ app.get('/users/:id', function(req, res) {
 //product id
 app.get('/products/:pid', function (req, res) {
     var pid = req.params.pid;
+    var time = moment().format();
     var sql = "select * from products where id =" + pid;
      db.any(sql)
 .then(function (data) {
-    console.log(data[0])
-    res.render('pages/product_edit', { product: data[0] })
+    
+    res.render('pages/product_edit', { product: data[0],time:time  })
 })
 .catch(function (error) {
     console.log('ERROR:' + error);
@@ -129,7 +130,7 @@ app.post('/products/update',function (req, res) {
     var title = req.body.title;
     var price = req.body.price;
     var time = req.body.time;
-    var sql = `update products set title = '${title}', price = '${price}' , created_at='${time}'where id = '${id}'`;
+    var sql = `update products set title = '${title}', price = '${price}' , created_at='${time}' where id = '${id}'`;
      //db.none
     db.any(sql)
         .then(function (data) {
