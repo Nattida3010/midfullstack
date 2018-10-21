@@ -224,11 +224,7 @@ app.get('/add_product', function (req, res) {
     var time = moment().format('MMMM Do YYYY, h:mm:ss a');
     res.render('pages/add_product', { time: time});
 });
-//time user edit
-app.get('/user_edit', function (req, res) {
-    var time = moment().format('MMMM Do YYYY, h:mm:ss a');
-    res.render('pages/user_edit', { time: time});
-});
+
 
 var port = process.env.PORT || 8080;
 app.listen(port, function() {
