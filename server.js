@@ -103,7 +103,6 @@ app.get('/products/:pid', function (req, res) {
 
 
 
-//addnewproduct
 //time product
 app.get('/add_product', function (req, res) {
     var time = moment().format('MMMM Do YYYY, h:mm:ss a');
@@ -221,7 +220,11 @@ app.get('/user_delete/:pid', function (req, res) {
         })
 });
 
-
+//time user
+app.get('/add_puser', function (req, res) {
+    var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+    res.render('pages/add_user', { time: time});
+});
 
 var port = process.env.PORT || 8080;
 app.listen(port, function() {
