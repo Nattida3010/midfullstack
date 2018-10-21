@@ -221,19 +221,18 @@ app.post('/users/add_user', function (req,res) {
 });
 
  //Edit User
-app.post('/users/update', function (req, res) {
-    var id = req.body.id;
-    var email = req.body.email;
-    var password = req.body.password;
-    var sql = `update users set email = '${email}', password = '${password}' where id = '${id}'`;
-    db.query(sql)
-       .then(function(data){
-           res.redirect('/users')
-       })
-       .catch(function(data){
-           console.log('ERROR:'+console.error);
-       })
-});
+//update users
+app.post('/users/update',function (req,res) {
+    var id =req.body.id;
+    var email =req.body.email;
+    var password =req.body.password;
+    var sql=`update users set email='${email}',password='${password}' where id=${id}`;
+    // res.send(sql)
+    //db.none
+    db.query(sql);
+        res.redirect('/users')    
+    db.close();
+    })
 
 //Delete User
 app.get('/user_delete/:pid', function (req, res) {
