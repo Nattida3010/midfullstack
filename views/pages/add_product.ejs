@@ -1,36 +1,31 @@
 <% include ../partials/header %>
-<form action="/products/add_product"  method = "POST">
-<div class="jumbotron">
-<h1 class="display-4">ADD NEW PRODUCT</h1>
-<div class="form-group">
-  <label for="">ID</label>
-  <input type="number"
-    class="form-control" name="id" id="" aria-describedby="helpId" placeholder="ID">
-  <small id="helpId" class="form-text text-muted"></small>
-</div>
-<div class="form-group">
-  <label for="">Title</label>
-  <input type="text"
-    class="form-control" name="title" id="" aria-describedby="helpId" placeholder="Title">
-  <small id="helpId" class="form-text text-muted"></small>
-</div>
-<div class="form-group">
-  <label for="">Price</label>
-  <input type="number"
-    class="form-control" name="price" id="" aria-describedby="helpId" placeholder="Price">
-  <small id="helpId" class="form-text text-muted"></small>
-</div>
-<div class="form-group">
+  <form action="/products/add_product" method="POST">
+    <div class="jumbotron">
+      <h1 class="display-4">ADD NEW PRODUCT</h1>
+      <div class="form-group">
+        <label for="">ID</label>
+        <input type="number" class="form-control" name="id" id="" aria-describedby="helpId" placeholder="ID">
+        <small id="helpId" class="form-text text-muted"></small>
+      </div>
+      <div class="form-group">
+        <label for="">Title</label>
+        <input type="text" class="form-control" name="title" id="" aria-describedby="helpId" placeholder="Title">
+        <small id="helpId" class="form-text text-muted"></small>
+      </div>
+      <div class="form-group">
+        <label for="">Price</label>
+        <input type="number" class="form-control" name="price" id="" aria-describedby="helpId" placeholder="Price">
+        <small id="helpId" class="form-text text-muted"></small>
+      </div>
+      <div class="form-group">
         <label for="">Time</label>
-        <input type="text"
-          class="form-control" value="<%= time %>" name="time"id="" aria-describedby="helpId" placeholder="" >
+        <input type="text" class="form-control" value="<%= time %>" name="time" id="" aria-describedby="helpId" placeholder="">
         <small id="helpId" class="form-text text-muted">Price</small>
       </div>
-    <div>
-<a name="" id="" class="btn btn-secondary" href="/products" role="button">CANCLE</a>
-<button type = "submit" class="btn btn-success">Save</button>
+      <div>
+        <a name="" id="" class="btn btn-secondary" href="/products" role="button">CANCLE</a>
+        <button type="submit" class="btn btn-success">Save</button>
+      </div>
+  </form>
 
-</div>
-</form>
-
-<% include ../partials/footer %>
+  <% include ../partials/footer %>
