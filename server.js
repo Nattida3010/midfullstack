@@ -18,7 +18,7 @@ app.get('/index', function (req, res) {
     res.render('pages/index');
 });
 app.get('/about', function (req, res) {
-    var name = 'Puinun';
+    var name = 'Myname';
     var hobbies = ['Football', 'Movie', 'Programming']
     var bdate = '06/08/1997'
     res.render('pages/about', { nickname: name, hobbies: hobbies, bdate: bdate });
