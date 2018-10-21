@@ -113,7 +113,7 @@ app.post('/products/add_product', function (req, res) {
     var sql = `INSERT INTO products (id, title, price)
     VALUES ('${id}', '${title}', '${price}')`;
     //db.none
-    console.log('UPDATE:' + sql);
+    // console.log('UPDATE:' + sql);
     db.any(sql)
         .then(function (data) {
             console.log('DATA:' + data);
