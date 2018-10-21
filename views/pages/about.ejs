@@ -1,27 +1,21 @@
 <% include ../partials/header %>
 <br>
-
-<div class="product-item-description d-flex ml-auto">
-
-  
- 
-            <div class="jumbotron">
-            
-             <h1 ><%= nickname%></h1>
-             <p>Puinun</p>
-                <ul>
-                <ul>
-                <% hobbies.forEach(function(hobby) { %>
-                    <li><%= hobby %> </li>
-                <% }); %>
-            </ul>
+<div class="jumbotron">
+        <h1 ><%= nickname%></h1>
+        <p>Puinun</p>
+           <ul>
+           <ul>
+           <% hobbies.forEach(function(hobby) { %>
+               <li><%= hobby %> </li>
+           <% }); %>
+       </ul>
       <p class="mb-0">My name is Nattida Noo-Boon 5930213010<br>Software Engineer  <br> If you cannot do great things, 
-        do small things in a great way.<br>-------------------------------</p>
-        <h3><%= bdate %></h3>
-    </div>
-  </div>
-
+      do small things in a great way.<br>-------------------------------</p>
+      <h3><%= bdate %></h3>  
+    
+</div>
 
 
 
   <% include ../partials/footer %>
+  
