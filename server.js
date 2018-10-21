@@ -24,28 +24,7 @@ app.get('/about', function (req, res) {
     res.render('pages/about', { nickname: name, hobbies: hobbies, bdate: bdate });
 });
 
-//display all products
-app.get('/products', function (req, res) {
-    db.any('select* from products order by id ASC')
-        .then(function (data) {
-            console.log('DATA' + data);
-            res.render('pages/products', { products: data })
-        })
-        .catch(function (error) {
-            console.log('ERROR : ' + error);
-        });
-});
-//users
-app.get('/users', function (req, res) {
-    db.any('select* from users order by id ASC')
-        .then(function (data) {
-            console.log('DATA' + data);
-            res.render('pages/users', { users: data })
-        })
-        .catch(function (error) {
-            console.log('ERROR : ' + error);
-        });
-});
+
 
 
 // Display all user
@@ -65,6 +44,17 @@ app.get('/users/:id', function(req, res) {
         })
     })
 
+//users
+app.get('/users', function (req, res) {
+    db.any('select* from users order by id ASC')
+        .then(function (data) {
+            console.log('DATA' + data);
+            res.render('pages/users', { users: data })
+        })
+        .catch(function (error) {
+            console.log('ERROR : ' + error);
+        });
+});
 //all product 
 app.get('/products/:pid', function (req, res) {
     var pid = req.params.pid;
@@ -79,7 +69,17 @@ app.get('/products/:pid', function (req, res) {
     console.log('ERROR:' + error);
 });
 });
-
+//display all products
+app.get('/products', function (req, res) {
+    db.any('select* from products order by id ASC')
+        .then(function (data) {
+            console.log('DATA' + data);
+            res.render('pages/products', { products: data })
+        })
+        .catch(function (error) {
+            console.log('ERROR : ' + error);
+        });
+});
 
 //add Product
 app.post('/products/add_product', function (req, res) {
