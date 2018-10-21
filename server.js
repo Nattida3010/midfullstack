@@ -237,7 +237,7 @@ app.get('/report_user', function (req, res) {
 //report Products
 app.get('/report_product', function (req, res) {
     var id = req.param('id');
-    var sql = 'select* from products ORDER BY Price ASC';
+    var sql = 'select* from products ORDER BY Price DESC limit 3';
     if (id) {
         sql += ' where id =' + id;
     }
