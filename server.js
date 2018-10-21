@@ -113,7 +113,7 @@ app.get('/add_product', function(req, res) {
 app.post('/products/add_product', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
-    var time = req.body.time
+    var time = req.body.time;
     var price = req.body.price;
     var sql = `INSERT INTO products (id,title,price,created_at)
     VALUES ('${id}', '${title}', '${price}','${time}')`;
@@ -203,7 +203,8 @@ app.post('/users/add_user', function (req, res) {
     var id = req.body.id;
     var email = req.body.email;
     var password = req.body.password;
-    var sql = `INSERT INTO users (id,title,price,created_at)
+    var time = req.body.time;
+    var sql = `INSERT INTO users (id,email,password,created_at)
     VALUES ('${id}', '${title}', '${price}','${time}')`;
     //db.none
     db.any(sql)
