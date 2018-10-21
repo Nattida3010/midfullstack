@@ -223,7 +223,7 @@ app.get('/user_delete/:pid', function (req, res) {
 //time user
 app.get('/add_user', function (req, res) {
     var times = moment().format('MMMM Do YYYY, h:mm:ss a');
-    res.render('pages/add_user', { time: times});
+    res.render('pages/add_user', { time: time});
 });
 
 var port = process.env.PORT || 8080;
