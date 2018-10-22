@@ -4,7 +4,7 @@
  <h2>Report Purchases Item List</h2>
  <br>
 <input class="form-control" id="myInput" type="text" placeholder="Search..">
-<table class="table">
+<!-- <table class="table">
     <thead>
         <tr>
             <th>Itemname</th>
@@ -22,8 +22,32 @@
         </tr>
       <% }); %>
     </tbody>
+</table> -->
+<table class="table">
+    <thead>
+        <tr class="bg-info">
+        <th>ITEM NAME</th>
+        <th>QUANTITY PURCHASED</th>
+        <th>AMOUNT</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% product.forEach(function(product) { %>
+        <tr>
+            <td scope="row"><font color="green"><%= product.title %></font></td>
+            <td><font color="green"><%= product.quantity %></font></td>
+            <td><font color="green">$<%= product.price %></font></td>
+        </tr>
+        <% }); %>
+        <% sum.forEach(function(sum) { %>
+        <tr class="bg-info">
+            <td scope="row">Total</td>
+            <td id="quantity"><%= sum.squantity %></td>
+            <td id="price">$<%= sum.sprice %></td>
+        </tr>
+        <% }); %>
+    </tbody>
 </table>
-
 
 <script>
         $(document).ready(function(){

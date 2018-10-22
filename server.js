@@ -203,36 +203,33 @@ app.get('/user_delete/:pid', function (req, res) {
             console.log('ERROR:' + error);
         })
 });
-//report product
-app.get('/report_product', function(req, res){
-    var sql ='select products.product_id,products.title,sum(purchase_items.quantity) as quantity,sum(purchase_items.price) as price from products inner join purchase_items on purchase_items.product_id=products.product_id group by products.product_id;select sum(quantity) as squantity,sum(price) as sprice from purchase_items';
+ app.get('/report_product', function(req, res) {
+    var sql ='SELECT products.id,products.title,products.price,products.tags,sum(purchase_items.quantity) as quantity,sum(purchase_items.price) as price FROM products,purchase_items where products.id=purchase_items.product_id group by products.id order by products.id ASC;select sum(quantity) as squantity,sum(price) as sprice from purchase_items';
     db.multi(sql)
     .then(function  (data) 
     {
- 
         // console.log('DATA' + data);
-        res.render('pages//report_product', { item: data[0],sum: data[1]});
+        res.render('pages/report_product', { product: data[0],sum: data[1]});
     })
     .catch(function (data) 
     {
         console.log('ERROR' + error);
     })
-
 });
+
 app.get('/report_user', function(req, res) {
-    var sql='select users.email,purchases.name,products.title,purchase_items.quantity,purchase_items.price*purchase_items.quantity as tatol FROM users INNER JOIN purchases ON purchases.user_id = users.user_id INNER JOIN purchase_items ON purchase_items.purchase_id=purchases.purchase_id   INNER JOIN products ON products.product_id = purchase_items.product_id order by purchase_items.price*purchase_items.quantity DESC limit 25'
+    var sql='select purchases.user_id,purchases.name,users.email,sum(purchase_items.price) as price from purchases,users,purchase_items where purchases.user_id=users.id group by purchases.user_id,purchases.name,users.email order by sum(purchase_items.price) desc LIMIT 30;'
     db.any(sql)
         .then(function (data) 
         {
-            console.log('DATA' + data);
-            res.render('pages/report_user', {purchases: data});
+            // console.log('DATA' + data);
+            res.render('pages/report_user', { user : data });
         })
         .catch(function (data) 
         {
             console.log('ERROR' + error);
         })
 });
-
 
 var port = process.env.PORT || 8080;
 app.listen(port, function() {
