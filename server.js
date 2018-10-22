@@ -20,7 +20,7 @@ app.get('/index', function (req, res) {
 app.get('/about', function (req, res) {
     var name = 'Puinun';
     var hobbies = ['Football', 'Movie', 'Programming']
-    var bdate = ''
+    var bdate = '06/08/40'
     res.render('pages/about', { nickname: name, hobbies: hobbies, bdate: bdate });
 });
 
