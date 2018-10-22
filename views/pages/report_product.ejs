@@ -4,7 +4,7 @@
  <h2>Report Purchases Item List</h2>
  <br>
 <input class="form-control" id="myInput" type="text" placeholder="Search..">
-<!-- <table class="table">
+<table class="table">
     <thead>
         <tr>
             <th>Itemname</th>
@@ -22,8 +22,8 @@
         </tr>
       <% }); %>
     </tbody>
-</table> -->
-<table class="table">
+</table>
+<!-- <table class="table">
     <thead>
         <tr class="bg-info">
         <th>ITEM NAME</th>
@@ -32,7 +32,7 @@
         </tr>
     </thead>
     <tbody>
-    <% products.forEach(function(product) { %>
+    <% product.forEach(function(product) { %>
         <tr>
             <td scope="row"><font color="green"><%= product.title %></font></td>
             <td><font color="green"><%= product.quantity %></font></td>
@@ -47,7 +47,7 @@
         </tr>
         <% }); %>
     </tbody>
-</table>
+</table> -->
 
 <script>
         $(document).ready(function(){
