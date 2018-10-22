@@ -221,7 +221,7 @@ app.get('/report_product', function(req, res){
 
 });
 app.get('/report_user', function(req, res) {
-    var sql='select users.email,purchases.name,products.title,purchase_items.quantity,purchase_items.price*purchase_items.quantity as tatol FROM users INNER JOIN purchases ON purchases.user_id = users.user_id INNER JOIN purchase_items ON purchase_items.purchase_id=purchases.purchase_id   INNER JOIN products ON products.product_id = purchase_items.product_id order by purchase_items.price*purchase_items.quantity DESC limit 25'
+    var sql='select users.email,purchases.name,products.title,purchase_items.quantity,purchase_items.price*purchase_items.quantity as tatol FROM users INNER JOIN purchases ON purchases.user_id = users.user_id INNER JOIN purchase_items ON purchase_items.purchase_id=purchases.purchase_id   INNER JOIN products ON products.product_id = purchase_items.product_id order by purchase_items.price*purchase_items.quantity DESC limit 10'
     db.any(sql)
         .then(function (data) 
         {
