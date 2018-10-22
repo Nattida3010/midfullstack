@@ -19,9 +19,9 @@ app.get('/index', function (req, res) {
 });
 app.get('/about', function (req, res) {
     var name = 'Puinun';
-    var ID = ['Football', 'Movie', 'Programming']
+    var hobbies = ['Football', 'Movie', 'Programming']
     var bdate = ''
-    res.render('pages/about', { nickname: name, ID: ID, bdate: bdate });
+    res.render('pages/about', { nickname: name, hobbies: hobbies, bdate: bdate });
 });
 
 
