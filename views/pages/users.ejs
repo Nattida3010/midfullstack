@@ -34,7 +34,7 @@
                         </td>
                         <!--<td><a name="btnConfirm" value="Confirm"  class="btn btn-danger" href="/user_delete/<%= user.user_id %>" onclick="return confirm('Are you sure you want to delete this user?')"role="button">DELETE</a></td>-->
                         <td>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                            <button type="button" class="btn btn-primary" data-target="#exampleModalCenter" onclick="deleteUser(<%= user.user_id %>);">
                                Delete
                             </button>
                         </td>
@@ -53,11 +53,11 @@
               </button>
             </div>
             <div class="modal-body">
-                    Are you sure you want to delete this usert?
+                    Are you sure you want to delete this user?
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <td><a name="btnConfirm" value="Confirm"  class="btn btn-danger" href="/user_delete/<%= user.user_id %>" role="button">DELETE</a></td>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+              <button type="button" class="btn btn-danger" onclick="confirmDelete()">Delete</button>
             </div>
           </div>
         </div>
@@ -70,9 +70,21 @@
                     $("#myTable tr").filter(function () {
                         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                     });
-                });
+                });                
             });
         </script>
 
     </div>
+    <script>
+        var selectedUser = 0;
+        function deleteUser(id){
+            console.log(id);
+            selectedUser = id;
+            $('#exampleModalCenter').modal('show')
+        }
+        function confirmDelete(){
+            console.log('confirm:'+selectedUser);
+            window.location.href = '/user_delete/'+selectedUser;
+        }        
+    </script>
     <% include ../partials/footer %>
