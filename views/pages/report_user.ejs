@@ -1,60 +1,83 @@
 <% include ../partials/header %>
-<div class="jumbotron" style="background-color: #B3C3DA;">
-
- <h2>Report Purchases List</h2>
- <br>
- <input class="form-control" id="myInput" type="text" placeholder="Search..">
+&nbsp;
+<h2 class="text-left">Report User Top 25</h2>
 <table class="table">
     <thead>
-        <!-- <tr>
-            <th>Customers ID</th>
+        <tr>
             <th>Name</th>
             <th>Email</th>
+            <th>title</th>
+            <th>Quantity</th>
             <th>Total Sales</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="myTable">
     <% users.forEach(function(user) { %>
         <tr>
-            <td scope="row"><%= user.user_id %></td>
-            <td><%= user.name %></td>
+            <td scope="row"><%= user.name %></td>
             <td><%= user.email %></td>
-            <td>$<%= user.price %></td>
+            <td><%= user.title %></td>
+            <td><%= user.quantity %></td>
+            <td>$<%= user.tatol %></td>
         </tr>
-        <% }); %> -->
-        <tr>
-            <th>Name</th>
-            <th>E-mail</th>
-            <th>Title</th>
-            <th>Quantity</th>
-            <th>Amount</th>
-        </tr>
-    </thead>
-    <tbody id="myTable">
-     <% purchases.forEach(function(purchas){ %>
-        <tr>
-            <td scope="row"><%= purchas.name %></td>
-            <td><%= purchas.email %></td>
-            <td><%= purchas.title %></td>
-            <td><%= purchas.quantity %></td>
-            <td><%= purchas.tatol %></td>
-        </tr>
-      <% }); %>
+        <% }); %>
     </tbody>
 </table>
-
-
+<canvas id="bar-chart" width="800" height="450"></canvas>
 <script>
-        $(document).ready(function(){
-          $("#myInput").on("keyup", function() {
-            var value = $(this).val().toLowerCase();
-            $("#myTable tr").filter(function() {
-              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-          });
-        });
-        </script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+<%
+function getRandomColor() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
 
-</div>
-</div>
+ 
+var labelss=[]
+var data=[]
+var color=[]
+users.forEach(function(user) { 
+    var colors =getRandomColor()
+    labelss.push("'" + user.name + "'");
+    color.push("'" +colors + "'");
+    data.push(user.tatol);
+}); %>
+
+new Chart(document.getElementById("bar-chart"), {
+    type: 'bar',
+    data: {
+      labels:[<%-labelss%>], 
+      
+      datasets:[{
+          label: "Products",
+                backgroundColor: [<%-color%>],   
+          data:  [<%=data%>]
+        }]
+      
+     
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Predicted world population (millions) in 2050'
+      }
+    }
+});
+
+
+
+
+</script>
   <% include ../partials/footer %>

@@ -1,65 +1,90 @@
 <% include ../partials/header %>
-<div class="jumbotron" style="background-color: #B3C3DA;">
-        
- <h2>Report Purchases Item List</h2>
- <br>
-<input class="form-control" id="myInput" type="text" placeholder="Search..">
+&nbsp;
+<h2 class="text-left">Report Product</h2>
 <table class="table">
     <thead>
         <tr>
-            <th>Itemname</th>
-            <th>Quantity</th>
-            <th>Amount</th>
-        </tr>
-    </thead>
-    <tbody id="myTable">
-     <% item.forEach(function(items){ %>
-        <tr>
-            <td scope="row"><%= items.title %></td>
-            <td><%= items.quantity %></td>
-            <td><%= items.price %></td>
-           
-        </tr>
-      <% }); %>
-    </tbody>
-</table>
-<!-- <table class="table">
-    <thead>
-        <tr class="bg-info">
         <th>ITEM NAME</th>
         <th>QUANTITY PURCHASED</th>
         <th>AMOUNT</th>
         </tr>
     </thead>
-    <tbody>
-    <% product.forEach(function(product) { %>
+    <tbody id="myTable">
+    <% products.forEach(function(product) { %>
         <tr>
-            <td scope="row"><font color="green"><%= product.title %></font></td>
-            <td><font color="green"><%= product.quantity %></font></td>
-            <td><font color="green">$<%= product.price %></font></td>
+            <td scope="row"><%= product.title %></font></td>
+            <td><%= product.quantity %></font></td>
+            <td>$<%= product.price %></font></td>
         </tr>
         <% }); %>
         <% sum.forEach(function(sum) { %>
-        <tr class="bg-info">
-            <td scope="row">Total</td>
-            <td id="quantity"><%= sum.squantity %></td>
-            <td id="price">$<%= sum.sprice %></td>
+        <tr>
+            <td scope="row"><h5>Total</h5></td>
+            <td id="quantity"><h5><%= sum.squantity %></h5></td>
+            <td id="price"><h5>$<%= sum.sprice %></h5></td>
         </tr>
         <% }); %>
     </tbody>
-</table> -->
-
+</table>
+<canvas id="bar-chart" width="800" height="450"></canvas>
 <script>
-        $(document).ready(function(){
-          $("#myInput").on("keyup", function() {
-            var value = $(this).val().toLowerCase();
-            $("#myTable tr").filter(function() {
-              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-          });
-        });
-        </script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+<%
+function getRandomColor() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
 
-</div>
+ 
+var labelss=[]
+var data=[]
+var color=[]
+products.forEach(function(product) { 
+    var colors =getRandomColor()
+    labelss.push("'" + product.title + "'");
+    color.push("'" +colors + "'");
+    data.push(product.price);
+}); %>
+
+new Chart(document.getElementById("bar-chart"), {
+    type: 'bar',
+    data: {
+      labels:[<%-labelss%>], 
+      
+      datasets:[{
+          label: "Products",
+                backgroundColor: [<%-color%>],   
+          data:  [<%=data%>]
+        }]
+      
+     
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Predicted world population (millions) in 2050'
+      }
+    }
+});
+
+
+
+
+</script>
+
+
+
 
   <% include ../partials/footer %>
