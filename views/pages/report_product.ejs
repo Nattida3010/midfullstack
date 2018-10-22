@@ -2,6 +2,8 @@
 &nbsp;
 <div class="jumbotron" style="background-color: #B3C3DA;">
 <h2 class="text-left">Report Product</h2>
+<br>
+<input class="form-control" id="myInput" type="text" placeholder="Search..">
 <table class="table">
     <thead>
         <tr>
@@ -83,8 +85,18 @@ new Chart(document.getElementById("bar-chart"), {
 
 
 
-</script>
 
+        var selectedUser = 0;
+        function deleteUser(id){
+            console.log(id);
+            selectedUser = id;
+            $('#exampleModalCenter').modal('show')
+        }
+        function confirmDelete(){
+            console.log('confirm:'+selectedUser);
+            window.location.href = '/user_delete/'+selectedUser;
+        }        
+    </script>
 </div>
 
 
