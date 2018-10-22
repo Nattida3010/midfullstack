@@ -34,9 +34,7 @@
                         </td>
                         <!--<td><a name="btnConfirm" value="Confirm"  class="btn btn-danger" href="/user_delete/<%= user.user_id %>" onclick="return confirm('Are you sure you want to delete this user?')"role="button">DELETE</a></td>-->
                         <td>
-                            <button type="button" class="btn btn-primary" data-target="#exampleModalCenter" onclick="deleteUser(<%= user.user_id %>);">
-                               Delete
-                            </button>
+                                <button type="button" class="btn btn-danger" data-target="#exampleModalCenter" onclick="deleteUser(<%= user.user_id %>);">Delete</button>
                         </td>
                     </tr>
                     <% }); %>
